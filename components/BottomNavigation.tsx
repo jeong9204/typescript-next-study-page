@@ -1,7 +1,7 @@
-import type { TypeScriptLesson } from "@/data/typescriptLessons";
+import type { Lesson } from "@/data/lessons";
 
 type BottomNavigationProps = {
-  lesson: TypeScriptLesson;
+  lesson: Lesson;
 };
 
 export function BottomNavigation({ lesson }: BottomNavigationProps) {
@@ -15,7 +15,7 @@ export function BottomNavigation({ lesson }: BottomNavigationProps) {
           ← 이전
         </button>
         <p className="text-sm font-medium text-slate-500">
-          {String(lesson.id).padStart(2, "0")} / {String(lesson.total).padStart(2, "0")}
+          {String(lesson.order).padStart(2, "0")} / {String(lesson.total).padStart(2, "0")}
         </p>
         <button
           type="button"

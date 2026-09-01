@@ -1,31 +1,32 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { TypeScriptLesson } from "@/data/typescriptLessons";
+import type { Lesson } from "@/data/lessons";
 
 type PracticePanelProps = {
-  lesson: TypeScriptLesson;
+  lesson: Lesson;
 };
 
 export function PracticePanel({ lesson }: PracticePanelProps) {
-  const [code, setCode] = useState(lesson.starterCode);
+  const [code, setCode] = useState(lesson.problem.starterCode);
   const [showHint, setShowHint] = useState(false);
   const [checked, setChecked] = useState(false);
 
   const isCorrect = useMemo(() => {
-    const compactCode = code.replace(/\s/g, "");
-    return compactCode.includes("age:35") && !compactCode.includes('age:"35"');
-  }, [code]);
+    const normalizeCode = (value: string) => value.replace(/\s/g, "");
+
+    return normalizeCode(code) === normalizeCode(lesson.problem.answerCode);
+  }, [code, lesson.problem.answerCode]);
 
   return (
     <section className="border-t border-slate-200/80 px-5 py-6 sm:px-7 lg:border-t-0">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-sm font-medium text-emerald-700">
-            {lesson.problemTitle}
+            직접 풀어보기
           </p>
           <h2 className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
-            age 타입 오류 수정하기
+            {lesson.problem.title}
           </h2>
         </div>
         <span className="w-fit rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-500">
@@ -34,7 +35,7 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
       </div>
 
       <p className="mt-4 text-[15px] leading-7 text-slate-600">
-        {lesson.problemDescription}
+        {lesson.problem.description}
       </p>
 
       <label htmlFor="code-editor" className="mt-6 block text-sm font-medium text-slate-800">
@@ -70,7 +71,7 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
 
       {showHint ? (
         <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
-          {lesson.hint}
+          {lesson.problem.hint}
         </div>
       ) : null}
 
@@ -85,7 +86,7 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
           <p className="font-semibold">
             {isCorrect ? "좋아요. 타입 오류가 해결되었습니다." : "아직 오류가 남아 있습니다."}
           </p>
-          <p className="mt-2">{lesson.explanation}</p>
+          <p className="mt-2">{lesson.problem.explanation}</p>
         </div>
       ) : (
         <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-500">

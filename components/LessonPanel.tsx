@@ -1,25 +1,25 @@
-import type { TypeScriptLesson } from "@/data/typescriptLessons";
+import type { Lesson } from "@/data/lessons";
 
 type LessonPanelProps = {
-  lesson: TypeScriptLesson;
+  lesson: Lesson;
 };
 
 export function LessonPanel({ lesson }: LessonPanelProps) {
   return (
     <section className="px-5 py-6 sm:px-7 lg:border-r lg:border-slate-200/80">
-      <p className="text-sm font-medium text-blue-700">{lesson.conceptTitle}</p>
+      <p className="text-sm font-medium text-blue-700">오늘의 개념</p>
       <h2 className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
-        interface로 객체의 모양 정하기
+        {lesson.title}
       </h2>
       <p className="mt-4 text-[15px] leading-7 text-slate-600">
         {lesson.description}
       </p>
 
       <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-600">
-        {lesson.bullets.map((bullet) => (
-          <li key={bullet} className="flex gap-3">
+        {lesson.concepts.map((concept) => (
+          <li key={concept} className="flex gap-3">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-            <span>{bullet}</span>
+            <span>{concept}</span>
           </li>
         ))}
       </ul>
