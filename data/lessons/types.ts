@@ -1,4 +1,7 @@
+export type LessonProblemType = "type-check" | "exact";
+
 export type LessonProblem = {
+  type: LessonProblemType;
   title: string;
   description: string;
   starterCode: string;
@@ -9,13 +12,26 @@ export type LessonProblem = {
 
 export type Lesson = {
   id: string;
-  order: number;
-  total: number;
   category: string;
   categoryLabel: string;
+  order: number;
   title: string;
   description: string;
   concepts: string[];
   exampleCode: string;
   problem: LessonProblem;
+};
+
+export type LessonNavigationItem = {
+  id: string;
+  category: string;
+  order: number;
+  title: string;
+};
+
+export type LessonPageData = {
+  lesson: Lesson;
+  total: number;
+  previousLesson: LessonNavigationItem | null;
+  nextLesson: LessonNavigationItem | null;
 };

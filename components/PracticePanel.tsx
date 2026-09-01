@@ -30,7 +30,7 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
           </h2>
         </div>
         <span className="w-fit rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-500">
-          TypeScript
+          {lesson.problem.type === "type-check" ? "Type Check" : "Exact Match"}
         </span>
       </div>
 

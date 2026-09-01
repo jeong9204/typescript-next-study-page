@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { LessonView } from "@/components/LessonView";
-import { getLesson, getLessonParams } from "@/data/lessons";
+import { getLessonPageData, getLessonParams } from "@/data/lessons";
 
 type LessonPageProps = {
   params: Promise<{
@@ -14,12 +14,12 @@ export function generateStaticParams() {
 }
 
 export default async function LessonPage({ params }: LessonPageProps) {
-  const { category, lesson: lessonId } = await params;
-  const lesson = getLesson(category, lessonId);
+  const { category, lesson } = await params;
+  const lessonPageData = getLessonPageData(category, lesson);
 
-  if (!lesson) {
+  if (!lessonPageData) {
     notFound();
   }
 
-  return <LessonView lesson={lesson} />;
+  return <LessonView {...lessonPageData} />;
 }

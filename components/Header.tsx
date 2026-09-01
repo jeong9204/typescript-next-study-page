@@ -2,10 +2,11 @@ import type { Lesson } from "@/data/lessons";
 
 type HeaderProps = {
   lesson: Lesson;
+  total: number;
 };
 
-export function Header({ lesson }: HeaderProps) {
-  const progress = Math.round((lesson.order / lesson.total) * 100);
+export function Header({ lesson, total }: HeaderProps) {
+  const progress = Math.round((lesson.order / total) * 100);
 
   return (
     <header className="border-b border-slate-200/80 px-5 py-4 sm:px-7">
