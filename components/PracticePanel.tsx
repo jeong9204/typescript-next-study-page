@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Lesson } from "@/data/lessons";
+import { gradeLessonAnswer } from "@/lib/gradeLessonAnswer";
 
 type PracticePanelProps = {
   lesson: Lesson;
@@ -12,11 +13,10 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
   const [showHint, setShowHint] = useState(false);
   const [checked, setChecked] = useState(false);
 
-  const isCorrect = useMemo(() => {
-    const normalizeCode = (value: string) => value.replace(/\s/g, "");
-
-    return normalizeCode(code) === normalizeCode(lesson.problem.answerCode);
-  }, [code, lesson.problem.answerCode]);
+  const isCorrect = useMemo(
+    () => gradeLessonAnswer(code, lesson.problem),
+    [code, lesson.problem],
+  );
 
   return (
     <section className="border-t border-slate-200/80 px-5 py-6 sm:px-7 lg:border-t-0">
