@@ -18,14 +18,14 @@ export function LessonView({
   nextLesson,
 }: LessonViewProps) {
   return (
-    <main className="nature-shell min-h-screen bg-[#f4f6f2] lg:flex lg:items-center lg:justify-center lg:p-10 xl:p-14">
-      <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col bg-[var(--panel)] shadow-none backdrop-blur-[2px] lg:min-h-0 lg:max-h-[calc(100vh-4rem)] lg:overflow-hidden lg:rounded-3xl lg:border lg:border-white/70 lg:shadow-app-window">
+    <main className="nature-shell h-dvh overflow-hidden bg-[#f4f6f2] lg:flex lg:items-center lg:justify-center lg:p-10 xl:p-14">
+      <div className="mx-auto flex h-dvh w-full max-w-5xl flex-col overflow-hidden bg-[var(--panel)] shadow-none backdrop-blur-[2px] lg:h-[min(760px,calc(100dvh-5rem))] lg:rounded-3xl lg:border lg:border-white/70 lg:shadow-app-window">
         <Header lesson={lesson} total={total} />
-        <div className="grid flex-1 lg:grid-cols-[41%_59%] lg:overflow-hidden">
-          <div className="lg:overflow-y-auto">
+        <div className="grid min-h-0 flex-1 overflow-y-auto lg:grid-cols-[41%_59%] lg:overflow-hidden">
+          <div className="lg:min-h-0 lg:overflow-y-auto">
             <LessonPanel lesson={lesson} />
           </div>
-          <div className="lg:overflow-y-auto">
+          <div className="lg:min-h-0 lg:overflow-y-auto">
             <PracticePanel key={lesson.id} lesson={lesson} />
           </div>
         </div>

@@ -49,7 +49,7 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
           setChecked(false);
         }}
         spellCheck={false}
-        className="code-scroll mt-2 min-h-72 w-full resize-y rounded-lg border border-slate-700 bg-[var(--code-bg)] p-4 font-mono text-sm leading-6 text-[var(--code-fg)] shadow-inner outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+        className="code-scroll mt-2 h-72 w-full resize-none rounded-lg border border-slate-700 bg-[var(--code-bg)] p-4 font-mono text-sm leading-6 text-[var(--code-fg)] shadow-inner outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
       />
 
       <div className="mt-4 flex flex-col gap-2 sm:flex-row">
