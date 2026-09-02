@@ -8,6 +8,7 @@ export type LessonProblem = {
   answerCode: string;
   hint: string;
   explanation: string;
+  errorExample?: string;
 };
 
 export type Lesson = {

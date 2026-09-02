@@ -87,6 +87,11 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
             {isCorrect ? "좋아요. 타입 오류가 해결되었습니다." : "아직 오류가 남아 있습니다."}
           </p>
           <p className="mt-2">{lesson.problem.explanation}</p>
+          {lesson.problem.errorExample ? (
+            <div className="mt-3 rounded-md border border-current/15 bg-white/55 px-3 py-2 font-mono text-xs leading-5">
+              {lesson.problem.errorExample}
+            </div>
+          ) : null}
         </div>
       ) : (
         <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-500">
