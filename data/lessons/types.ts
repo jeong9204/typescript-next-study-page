@@ -1,5 +1,15 @@
 export type LessonProblemType = "type-check" | "exact";
 
+export type LessonCommonMistake = {
+  code: string;
+  reason: string;
+};
+
+export type LessonComparisonItem = {
+  label: string;
+  description: string;
+};
+
 export type LessonProblem = {
   type: LessonProblemType;
   title: string;
@@ -20,7 +30,11 @@ export type Lesson = {
   description: string;
   concepts: string[];
   exampleCode: string;
+  conceptExampleCode?: string;
+  learningNotes?: string[];
+  comparisonItems?: LessonComparisonItem[];
   problem: LessonProblem;
+  commonMistakes?: LessonCommonMistake[];
 };
 
 export type LessonNavigationItem = {

@@ -92,6 +92,20 @@ export function PracticePanel({ lesson }: PracticePanelProps) {
               {lesson.problem.errorExample}
             </div>
           ) : null}
+
+          {lesson.commonMistakes ? (
+            <div className="mt-4 space-y-3">
+              <p className="font-semibold">자주 하는 실수</p>
+              {lesson.commonMistakes.map((mistake) => (
+                <div key={mistake.code} className="rounded-md border border-current/15 bg-white/55 p-3">
+                  <pre className="code-scroll overflow-x-auto rounded bg-slate-950 p-3 text-xs leading-5 text-slate-100">
+                    <code>{mistake.code}</code>
+                  </pre>
+                  <p className="mt-2 text-sm leading-6">{mistake.reason}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       ) : (
         <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-500">

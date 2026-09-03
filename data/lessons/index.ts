@@ -3,6 +3,8 @@ import type { Lesson, LessonNavigationItem, LessonPageData } from "./types";
 
 export type {
   Lesson,
+  LessonCommonMistake,
+  LessonComparisonItem,
   LessonNavigationItem,
   LessonPageData,
   LessonProblem,

@@ -272,5 +272,77 @@ printMessage("hello");`,
         "void로 선언된 함수에서는 string이나 number 같은 값을 반환하면 안 됩니다. 이 함수는 console.log를 실행하는 것이 목적이므로 \"hello\"를 return할 필요가 없습니다.",
       errorExample: "'string' 형식은 'void' 형식에 할당할 수 없습니다.",
     },
+  },
+  {
+    id: "ts-function-void-review",
+    category: "typescript",
+    categoryLabel: "TypeScript",
+    order: 7,
+    title: "function과 void 다시 확인하기",
+    description:
+      "함수의 매개변수 타입과 반환 타입의 역할을 다시 확인하고, void가 어떤 의미인지 복습합니다. void로 선언된 함수는 의미 있는 값을 반환하지 않는 함수입니다.",
+    concepts: ["function", "parameter", "return", "return type", "void"],
+    exampleCode: `function printMessage(message: string): void {
+  console.log(message);
+}
+
+printMessage("hello");`,
+    conceptExampleCode: `function getMessage(): string {
+  return "hello";
+}
+
+function printMessage(): void {
+  console.log("hello");
+}`,
+    learningNotes: [
+      "parameter type은 함수로 들어오는 값의 타입을 지정합니다.",
+      "return type은 함수 밖으로 나가는 결과값의 타입을 지정합니다.",
+      "string 반환 타입은 문자열을 반환해야 합니다.",
+      "number 반환 타입은 숫자를 반환해야 합니다.",
+      "void 반환 타입은 의미 있는 값을 반환하지 않는 함수에 사용합니다.",
+    ],
+    comparisonItems: [
+      {
+        label: "string",
+        description: "결과로 문자열을 반환",
+      },
+      {
+        label: "number",
+        description: "결과로 숫자를 반환",
+      },
+      {
+        label: "void",
+        description: "작업은 수행하지만 결과값은 반환하지 않음",
+      },
+    ],
+    problem: {
+      type: "type-check",
+      title: "void 함수의 타입 오류 수정하기",
+      description:
+        "아래 함수는 반환 타입이 void입니다. TypeScript 타입 오류가 발생하지 않도록 코드를 수정해주세요.",
+      starterCode: `function printMessage2(message: string): void {
+  console.log(message);
+
+  return "hello";
+}`,
+      answerCode: `function printMessage2(message: string): void {
+  console.log(message);
+}`,
+      hint:
+        "함수 선언의 마지막에 있는 : void가 어떤 값을 반환해야 한다는 뜻인지 생각해보세요.",
+      explanation:
+        "void는 이 함수가 의미 있는 값을 반환하지 않는다는 뜻입니다. console.log처럼 동작만 수행하는 함수에 사용할 수 있습니다. 따라서 string 값인 \"hello\"를 return하면 반환 타입 void와 맞지 않아 오류가 발생합니다.",
+      errorExample: "'string' 형식은 'void' 형식에 할당할 수 없습니다.",
+    },
+    commonMistakes: [
+      {
+        code: `function printMessage2(message: string): void {
+  console.log(message);
+  return "hello";
+}`,
+        reason:
+          "void 함수에서 string 값을 반환하고 있습니다. 반환값이 필요하다면 반환 타입을 string으로 변경해야 하고, 반환값이 필요하지 않다면 return 값을 제거해야 합니다.",
+      },
+    ],
   }
 ];

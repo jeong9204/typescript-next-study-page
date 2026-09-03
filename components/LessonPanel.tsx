@@ -35,6 +35,40 @@ export function LessonPanel({ lesson }: LessonPanelProps) {
           <code>{lesson.exampleCode}</code>
         </pre>
       </div>
+
+      {lesson.conceptExampleCode ? (
+        <div className="mt-6">
+          <p className="mb-2 text-sm font-medium text-slate-800">비교 코드</p>
+          <pre className="code-scroll overflow-x-auto rounded-lg bg-slate-900 p-4 text-sm leading-6 text-slate-100 shadow-inner">
+            <code>{lesson.conceptExampleCode}</code>
+          </pre>
+        </div>
+      ) : null}
+
+      {lesson.learningNotes ? (
+        <ul className="mt-5 space-y-2 text-sm leading-6 text-slate-600">
+          {lesson.learningNotes.map((note) => (
+            <li key={note} className="flex gap-3">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+              <span>{note}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
+      {lesson.comparisonItems ? (
+        <div className="mt-5 space-y-2 rounded-lg border border-slate-200 bg-slate-50 p-3">
+          {lesson.comparisonItems.map((item) => (
+            <div key={item.label} className="flex items-start gap-3 text-sm leading-6">
+              <span className="min-w-14 font-mono font-semibold text-slate-900">
+                {item.label}
+              </span>
+              <span className="text-slate-400">→</span>
+              <span className="text-slate-600">{item.description}</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }
