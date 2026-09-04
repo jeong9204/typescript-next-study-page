@@ -1,3 +1,5 @@
+export type StudyCategory = "typescript" | "sql" | "nextjs";
+
 export type LessonProblemType = "type-check" | "exact";
 
 export type LessonCommonMistake = {
@@ -23,7 +25,7 @@ export type LessonProblem = {
 
 export type Lesson = {
   id: string;
-  category: string;
+  category: StudyCategory;
   categoryLabel: string;
   order: number;
   title: string;
@@ -37,14 +39,29 @@ export type Lesson = {
   commonMistakes?: LessonCommonMistake[];
 };
 
+export type StudyCourse = {
+  id: StudyCategory;
+  title: string;
+  subtitle?: string;
+  lessons: Lesson[];
+};
+
+export type StudyCourseSummary = {
+  id: StudyCategory;
+  title: string;
+  subtitle?: string;
+  firstLessonHref: string;
+};
+
 export type LessonNavigationItem = {
   id: string;
-  category: string;
+  category: StudyCategory;
   order: number;
   title: string;
 };
 
 export type LessonPageData = {
+  course: StudyCourse;
   lesson: Lesson;
   total: number;
   previousLesson: LessonNavigationItem | null;

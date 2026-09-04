@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Lesson, LessonNavigationItem } from "@/data/lessons";
+import { getStudyHref } from "@/data/lessons";
 
 type BottomNavigationProps = {
   lesson: Lesson;
@@ -9,7 +10,7 @@ type BottomNavigationProps = {
 };
 
 function getLessonHref(lesson: LessonNavigationItem) {
-  return `/learn/${lesson.category}/${lesson.id}`;
+  return getStudyHref(lesson.category, lesson.order);
 }
 
 const navigationClassName =

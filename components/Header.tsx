@@ -1,11 +1,12 @@
-import type { Lesson } from "@/data/lessons";
+import type { Lesson, StudyCourse } from "@/data/lessons";
 
 type HeaderProps = {
+  course: StudyCourse;
   lesson: Lesson;
   total: number;
 };
 
-export function Header({ lesson, total }: HeaderProps) {
+export function Header({ course, lesson, total }: HeaderProps) {
   const progress = Math.round((lesson.order / total) * 100);
 
   return (
@@ -13,7 +14,7 @@ export function Header({ lesson, total }: HeaderProps) {
       <div className="flex items-start justify-between gap-5">
         <div>
           <h1 className="text-lg font-semibold tracking-normal text-slate-950 sm:text-xl">
-            TypeScript Study
+            {course.title}
           </h1>
           <p className="mt-1 text-sm text-slate-500">
             {lesson.categoryLabel} / {String(lesson.order).padStart(2, "0")}

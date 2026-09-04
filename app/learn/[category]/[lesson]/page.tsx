@@ -1,19 +1,14 @@
-import { notFound } from "next/navigation";
-import { LessonView } from "@/components/LessonView";
-import { getLessonPageData, getLessonParams } from "@/data/lessons";
+import { notFound, redirect } from "next/navigation";
+import { getLessonPageData, getStudyHref } from "@/data/lessons";
 
-type LessonPageProps = {
+type LegacyLessonPageProps = {
   params: Promise<{
     category: string;
     lesson: string;
   }>;
 };
 
-export function generateStaticParams() {
-  return getLessonParams();
-}
-
-export default async function LessonPage({ params }: LessonPageProps) {
+export default async function LegacyLessonPage({ params }: LegacyLessonPageProps) {
   const { category, lesson } = await params;
   const lessonPageData = getLessonPageData(category, lesson);
 
@@ -21,5 +16,5 @@ export default async function LessonPage({ params }: LessonPageProps) {
     notFound();
   }
 
-  return <LessonView {...lessonPageData} />;
+  redirect(getStudyHref(lessonPageData.course.id, lessonPageData.lesson.order));
 }
